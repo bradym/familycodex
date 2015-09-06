@@ -20,15 +20,15 @@ Development Details
 Getting the site running locally
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Clone this repo
-- Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_
-- Install `Vagrant <https://www.vagrantup.com/>`_
-- Add entries to your hosts file
-
-  - 192.168.10.10       www.familycodex.dev smith.familycodex.dev mitchell.familycodex.dev
-
-- SSH into the VM: vagrant ssh
-
-- Run: familycodex/artisan local:setup
+#. Clone this repo
+#. Install `VirtualBox <https://www.virtualbox.org/wiki/Downloads>`_
+#. Install `Vagrant <https://www.vagrantup.com/>`_
+#. Add entries to your hosts file - :code:`192.168.10.10       www.familycodex.dev smith.familycodex.dev mitchell.familycodex.dev`
+#. Open a command prompt in the folder where you cloned the code.
+#. :code:`git checkout develop`
+#. :code:`composer install`
+#. :code:`vagrant up`
+#. :code:`vagrant ssh`
+#. :code:`familycodex/artisan local:setup`
 
 
