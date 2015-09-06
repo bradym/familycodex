@@ -71,8 +71,8 @@ class LocalSetup extends Command
 
         // Generate ide helpers
         $this->call('ide-helper:generate');
+        $this->call('ide-helper:models', ['--nowrite' => 'Yes']);
         $this->call('ide-helper:meta');
-        $this->call('ide-helper:models');
 
         // Publish vendor assets
         $this->call('vendor:publish');
