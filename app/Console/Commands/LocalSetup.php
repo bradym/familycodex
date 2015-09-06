@@ -41,10 +41,10 @@ class LocalSetup extends Command
 
         // Get user input
         $input = [
-            'host'     => $this->ask('Database Host: ', 'localhost'),
-            'dbname'   => $this->ask('Databse Name: ', 'familycodex'),
-            'username' => $this->ask('Database Username: ', 'homestead'),
-            'password' => $this->secret('Database Password: ','secret'),
+            'host'     => 'localhost',
+            'dbname'   => 'familycodex',
+            'username' => 'homestead',
+            'password' => 'secret',
         ];
 
         // Create .env
