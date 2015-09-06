@@ -14,7 +14,7 @@
 /**
  * Routes for www subdomain
  */
-Route::group(['domain' => 'www.familycodex.dev'], function () {
+Route::group(['domain' => 'www.familycodex.' . env('APP_TLD')], function () {
     Route::get('/', [ 'uses' => 'HomeController@index']);
 });
 
@@ -22,7 +22,7 @@ Route::group(['domain' => 'www.familycodex.dev'], function () {
 /**
  * Routes for family subdomains
  */
-Route::group(['domain' => '{slug}.familycodex.dev'], function () {
+Route::group(['domain' => '{slug}.familycodex.' . env('APP_TLD')], function () {
     Route::get('/', [ 'uses' => 'FamilyController@index']);
 
     Route::get('{slug}.html', ['uses' => 'PersonController@index']);
