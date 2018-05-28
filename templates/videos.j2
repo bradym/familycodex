@@ -1,0 +1,7 @@
+<div class="row">
+    {% for item in person['videos'] %}
+    <div class="col">
+        <iframe width="{{ item['width'] }}" height="{{ item['height'] }}" src="{{ item['url'] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+    </div>
+    {% endfor %}
+</div>

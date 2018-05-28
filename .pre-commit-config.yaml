@@ -1,0 +1,24 @@
+repos:
+
+- repo: git://github.com/detailyang/pre-commit-shell
+  sha: 1.0.2
+  hooks:
+    - id: shell-lint
+
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  sha: v1.1.1
+  hooks:
+    - id: flake8
+      args: [--ignore=E501,E303,E305,S001,E126,E127,F401,B001,B002]
+    - id: check-added-large-files
+    - id: check-byte-order-marker
+    - id: check-case-conflict
+    - id: check-executables-have-shebangs
+    - id: check-json
+    - id: check-merge-conflict
+    - id: check-symlinks
+    - id: check-yaml
+    - id: detect-aws-credentials
+    - id: detect-private-key
+    - id: mixed-line-ending
+    - id: trailing-whitespace

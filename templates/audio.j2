@@ -1,0 +1,12 @@
+<div class="row">
+    {% for item in person['audio'] %}
+    <div class="col">
+    <h3>{{ item['title'] }}</h3>
+    <audio controls class="embed-responsive-item">
+        <source src="{{ item['url'] }}" type="audio/mpeg"/>
+        <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+        An html5-capable browser is required to play this audio.
+    </audio>
+</div>
+    {% endfor %}
+</div>
