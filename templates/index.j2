@@ -2,27 +2,14 @@
 
 {% set title = pages[current_item]['title'] %}
 
-{% block page_css %}
-<style type="text/css">
-.card-columns {
-    column-count: 2
-}
-</style>
-{% endblock %}
-
 {% block content %}
-<div class="card-deck">
-    {% for item in people %}
-        {% set person = people[item] %}
-        {% set href = '/' + item + '.html' %}
-        <div class="card" style="max-width: 18rem;">
-            <a href="{{ href }}">
-                <img src="/media/{{ item }}/photos/thumbnail.jpg" alt="Thumbnail image of {{ person.full_name }}">
-            </a>
-            <div class="card-body">
-                <a class="text-dark" href="{{ href }}"><h5 class="card-title text-center">{{ person.full_name }}</h5></a>
-            </div>
-        </div>
-    {% endfor %}
-</div>
+    <h1>Welcome to the Family Codex</h1>
+    <p>The goal of this site is to share family artifacts, please choose a family member:</p>
+    <ul>
+        {% for item in people|sort %}
+            {% set person = people[item] %}
+            {% set href = '/' + item + '.html' %}
+            <li><a href="{{ href }}">{{ person.full_name }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}

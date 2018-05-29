@@ -22,7 +22,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for item in people %}
+                        {% for item in people|sort %}
                             {% set person = people[item] %}
                             {% set href = '/' + item + '.html' %}
                             <a class="dropdown-item" href="{{ href }}">{{ person.full_name }}</a>
