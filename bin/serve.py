@@ -17,7 +17,6 @@ from generate import run
 
 
 class CustomWatcher(Watcher):
-
     def is_glob_changed(self, path, ignore=None):
         for f in glob.glob(path, recursive=True):
             if self.is_file_changed(f, ignore):
@@ -27,13 +26,6 @@ class CustomWatcher(Watcher):
 
 base_dir = os.path.realpath(Path(__file__).parent.parent)
 build_dir = os.path.join(base_dir, 'build')
-
-# Which paths should trigger a rebuild?
-paths = [
-    'data',
-    'static',
-    'templates'
-]
 
 
 def build():
@@ -51,8 +43,8 @@ build()
 server = Server(watcher=CustomWatcher())
 
 # Watch files and re-generate on changes
-for path in paths:
+for path in ['data', 'static', 'templates']:
     full_path = os.path.join(base_dir, path)
-    server.watch('../{}/**/*'.format(path), build)
+    server.watch('{}/**/*'.format(full_path), build)
 
 server.serve(root=build_dir)
