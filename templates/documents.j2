@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="dropdown show pb-3">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Select a document to view
+        </a>
+        <div id="documentList" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {% for document in person['documents'] %}
+            <a href="#" class="dropdown-item" data-file="{{ document['url'] }}">{{ document['title'] }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div id="documentViewerContainer" class="col pl-0"></div>
+</div>
