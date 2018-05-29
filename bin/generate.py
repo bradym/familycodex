@@ -50,8 +50,15 @@ class GenerateSite:
 
     def clean(self):
         """Delete the contents of the build folder."""
-        shutil.rmtree(self.build_dir)
-        os.mkdir(self.build_dir)
+        if os.path.isdir(self.build_dir):
+            shutil.rmtree(self.build_dir)
+            os.mkdir(self.build_dir)
+
+        media_dir = os.path.join(self.base_dir, 'media')
+
+        if os.path.isdir(self.build_dir) and os.path.isdir(media_dir):
+            symlink_path = os.path.join(self.build_dir, 'media')
+            os.symlink(media_dir, symlink_path)
 
     def copy_static(self):
         """Copies code in the static folder to the build directory without modification."""
