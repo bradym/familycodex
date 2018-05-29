@@ -9,9 +9,24 @@ if [[ ! -z ${DEBUG_MODE+x} ]]; then
     set -o functrace
 fi
 
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[-1]}")" && pwd)"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+BASE_DIR="${DIR%/*}"
 BUILD_DIR="$BASE_DIR/build"
+MEDIA_DIR="$BASE_DIR/media"
 
-# TODO: Exclude .DS_Store
+# Nuke any .DS_Store files before syncing.
+find "$BASE_DIR" -name "*.DS_Store" -delete
 
-aws s3 sync --exclude .DS_Store --profile familycodex "$BUILD_DIR" s3://www.familycodex.net/
+# Sync the media directory
+if [[ -d "$MEDIA_DIR" ]]; then
+    aws s3 sync --profile familycodex "$MEDIA_DIR" s3://www.familycodex.net/media
+else
+    echo "$MEDIA_DIR does not exist, not uploading any new media."
+fi
+
+# Sync the build directory
+if [[ -d "$BUILD_DIR" ]]; then
+    aws s3 sync --profile familycodex "$BUILD_DIR" s3://www.familycodex.net/
+else
+    echo "$BUILD_DIR does not exist, cannot upload site code."
+fi
