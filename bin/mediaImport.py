@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+# coding=utf-8
+"""
+Updates yaml files in data folder by reading metadata of media in the media folder. Also uploads
+files to s3 where they'll be served to site visitors.
+
+TODO: Add support for more filetypes, currently only works for audio files.
+TODO: Refactor to use click for CLI handling and command line arguments.
+"""
 
 import glob
 import os
@@ -49,6 +57,7 @@ def save_person_data(person, data):
         yaml.dump(data, f, default_flow_style=False)
 
 
+# TODO: Refactor into a process_audio function
 for file_path in get_files('audio', 'mp3'):
     tag = Tag()
     tag.parse(file_path)
@@ -69,6 +78,7 @@ for file_path in get_files('audio', 'mp3'):
 
         save_person_data(person, data)
 
+        # TODO: break into separate function and only run when user specifies it should run.
         session = boto3.Session(profile_name=aws_profile)
         s3 = session.client('s3')
 

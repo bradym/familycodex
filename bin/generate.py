@@ -3,6 +3,7 @@
 
 import os
 import shutil
+from pathlib import Path
 
 import htmlmin
 import yaml
@@ -12,8 +13,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 class GenerateSite:
 
     def __init__(self):
-
-        self.base_dir = os.path.dirname(os.path.realpath(__file__))
+        self.base_dir = os.path.realpath(Path(__file__).parent.parent)
         self.template_dir = os.path.join(self.base_dir, 'templates')
         self.data_dir = os.path.join(self.base_dir, 'data')
         self.build_dir = os.path.join(self.base_dir, 'build')
@@ -22,49 +22,39 @@ class GenerateSite:
             loader=FileSystemLoader(self.template_dir),
             autoescape=select_autoescape(['html', 'xml'])
         )
+        self.data = {}
         self.html_minify = True
 
-        if not os.path.isdir(self.template_dir):
-            raise FileNotFoundError(self.template_dir)
+        required_dirs = [self.template_dir, self.data_dir, self.static_dir]
 
-        if not os.path.isdir(self.data_dir):
-            raise FileNotFoundError(self.data_dir)
+        for folder in required_dirs:
+            if not os.path.isdir(folder):
+                raise FileNotFoundError(folder)
 
         if not os.path.isdir(self.build_dir):
             os.mkdir(self.build_dir)
 
-        self.data = {}
+    def generate_page(self, template_name, item):
+        """Render the given template and write it to disk."""
+        self.data['current_item'] = item
+        dest = os.path.join(self.build_dir, '{}.html'.format(item))
+        template = '{}.j2'.format(template_name)
 
-    def get_build_path(self, what):
-        return os.path.join(self.build_dir, '{}'.format(what))
-
-    def write_file(self, template, path):
         html = self.env.get_template(template).render(self.data)
 
         if self.html_minify:
             html = htmlmin.minify(html, remove_comments=True)
 
-        with open(path, 'w') as f:
+        with open(dest, 'w') as f:
             f.write(html)
 
-    def generate_page(self, template_name, item):
-        self.data['current_item'] = item
-        dest = self.get_build_path('{}.html'.format(item))
-        template = '{}.j2'.format(template_name)
-        self.write_file(template, dest)
-
     def clean(self):
-        for root, dirs, files in os.walk(self.build_dir, topdown=False):
-            for item in files:
-                path = os.path.join(root, item)
-                os.remove(path)
-            for item in dirs:
-                path = os.path.join(root, item)
-                if not os.path.islink:
-                    os.rmdir(path)
+        """Delete the contents of the build folder."""
+        shutil.rmtree(self.build_dir)
+        os.mkdir(self.build_dir)
 
     def copy_static(self):
-
+        """Copies code in the static folder to the build directory without modification."""
         for current_dir in [os.path.join(self.base_dir, 'node_modules'), self.static_dir]:
 
             for root, dirs, files in os.walk(current_dir):
@@ -88,6 +78,10 @@ class GenerateSite:
                     shutil.copyfile(source, dest)
 
     def load_data(self):
+        """
+        This loops through all yaml files in the data directory and loads the data into a
+        class property for later use.
+        """
         for root, dirs, files in os.walk(self.data_dir):
             for item in files:
 
@@ -102,10 +96,16 @@ class GenerateSite:
                     self.data[data_type][name] = yaml.load(f)
 
     def set_minify(self, html_minify):
+        """Setter for the html_minify property. Used to disable html minification when built via the local server."""
         self.html_minify = html_minify
 
 
 def run(html_minify=True):
+    """
+    This function is what actually runs all the functions to generate the site. It is imported and used in
+    serve.py to avoid having different behavior when generating as a one-time task vs when running the local
+    server during development.
+    """
     generator = GenerateSite()
     generator.set_minify(html_minify)
     generator.clean()
