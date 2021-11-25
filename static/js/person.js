@@ -21,8 +21,10 @@ $(document).ready(function() {
     $('#nav-tabContent div:first-child').addClass('show').addClass('active');
 
     // Render the first document without requiring a click.
-    if ($('#documentList').children().length == 1) {
+    if ($('#documentList').children().length > 0) {
+        $('#documentList').children().first().addClass('active')
         renderPdf($('#documentList').children().first().data('file'));
+
     }
 
     // Render the selected PDF from the list
