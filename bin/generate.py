@@ -100,7 +100,7 @@ class GenerateSite:
                     self.data[data_type] = {}
 
                 with open(full_path, 'rb') as f:
-                    self.data[data_type][name] = yaml.load(f)
+                    self.data[data_type][name] = yaml.safe_load(f)
 
     def set_minify(self, html_minify):
         """Setter for the html_minify property. Used to disable html minification when built via the local server."""
