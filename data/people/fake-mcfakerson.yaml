@@ -1,0 +1,46 @@
+full_name: Fake McFakerson
+fake: true
+birth_date: 1 July 1800
+death_date: 30 June 1900
+family: McFakerson
+slug: fake-mcfakerson
+photo_url: https://pixabay.com/get/g0ccccac2c0b824ea48841cdfb11f54c98967afe97beefd03bd5306b8e62f6ed0c1bf899672197bdd2b2ced40327d52bad59cf0fa6b364fa555a4649212bfffefa4140664de7b1f03c1b1980f9e34c5a0_640.png?attachment=
+photo_width: 400
+
+links:
+  - title: google.com
+    url: https://www.google.com
+  - title: yahoo.com
+    url: https://www.yahoo.com
+
+videos:
+  - url: https://www.youtube-nocookie.com/embed/33DWqRyAAUw?rel=0
+    description: My weapon against noisy Mockingbirds and Squirrels.
+    width: 560
+    height: 315
+
+documents:
+  - title: This is a sample pdf.
+    description: Vestibulum neque massa, scelerisque sit amet ligula eu, congue molestie mi.
+    url: https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf
+  - title: Another sample pdf.
+    url: https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_500_kB.pdf
+  - title: Yet another sample pdf.
+    url: https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_1MB.pdf
+
+
+photos:
+  - url: https://file-examples-com.github.io/uploads/2017/10/file_example_JPG_100kB.jpg
+    title: this is the image title.
+  - url: https://file-examples-com.github.io/uploads/2017/10/file_example_GIF_500kB.gif
+    title: Image 2
+  - url: https://file-examples-com.github.io/uploads/2020/03/file_example_SVG_20kB.svg
+    title: Image 3
+
+audio:
+  - title: Sample 1
+    url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3
+  - title: Sample 2
+    url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3
+  - title: Sample 3
+    url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3

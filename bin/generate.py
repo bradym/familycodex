@@ -4,6 +4,7 @@
 import os
 import shutil
 from pathlib import Path
+from pprint import pprint
 
 import htmlmin
 import yaml
@@ -19,6 +20,7 @@ class GenerateSite:
         self.build_dir = os.path.join(self.base_dir, 'build')
         self.static_dir = os.path.join(self.base_dir, 'static')
         self.env = Environment(
+            extensions=['jinja2.ext.debug'],
             loader=FileSystemLoader(self.template_dir),
             autoescape=select_autoescape(['html', 'xml'])
         )
@@ -84,7 +86,7 @@ class GenerateSite:
                     dest = os.path.join(dest_dir, item)
                     shutil.copyfile(source, dest)
 
-    def load_data(self):
+    def load_data(self, include_fake_data=False):
         """
         This loops through all yaml files in the data directory and loads the data into a
         class property for later use.
@@ -100,14 +102,32 @@ class GenerateSite:
                     self.data[data_type] = {}
 
                 with open(full_path, 'rb') as f:
-                    self.data[data_type][name] = yaml.safe_load(f)
+                    current_data = yaml.safe_load(f)
+
+                    if 'fake' not in current_data or include_fake_data:
+                        self.data[data_type][name] = current_data
+
+    def process_data(self):
+        """
+        Loop through loaded data and do any additional processing.
+        """
+        if 'families' not in self.data:
+            self.data['families'] = {}
+
+        for person in self.data['people']:
+            current_family = self.data['people'][person]['family']
+
+            if current_family not in self.data['families']:
+                self.data['families'][current_family] = []
+
+            self.data['families'][current_family].append(self.data['people'][person])
 
     def set_minify(self, html_minify):
         """Setter for the html_minify property. Used to disable html minification when built via the local server."""
         self.html_minify = html_minify
 
 
-def run(html_minify=True):
+def run(html_minify=True, include_unpublished_data=False):
     """
     This function is what actually runs all the functions to generate the site. It is imported and used in
     serve.py to avoid having different behavior when generating as a one-time task vs when running the local
@@ -117,7 +137,8 @@ def run(html_minify=True):
     generator.set_minify(html_minify)
     generator.clean()
     generator.copy_static()
-    generator.load_data()
+    generator.load_data(include_unpublished_data)
+    generator.process_data()
     generator.generate_page('index', 'index')
 
     for item in generator.data['people']:

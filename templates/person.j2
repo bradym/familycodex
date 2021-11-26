@@ -6,7 +6,11 @@
 {% block content %}
     <div class="d-flex flex-row">
         <div class="p-2">
+            {% if person.photo_url %}
+            <img class="img-responsive" src="{{ person.photo_url }}" alt="" width="{{ person.photo_width }}">
+            {% else %}
             <img class="img-responsive" src="/media/{{ current_item }}/photos/main.jpg" alt="">
+            {% endif %}
         </div>
         <div class="p-2">
             <h2>{{ person.full_name }}</h2>
@@ -20,7 +24,7 @@
                     {% endfor %}
                     </ul>
                 </td></tr>
-                <tr><td colspan="2" class="pt-3">{{ person.description }}</td></tr>
+                {% if person.description %}<tr><td colspan="2" class="pt-3">{{ person.description }}</td></tr>{% endif %}
             </table>
         </div>
     </div>
@@ -30,8 +34,8 @@
                 {% if person[section] | count > 0 %}
                     <a class="nav-item nav-link"
                        id="nav-{{ section }}-tab"
-                       data-toggle="tab"
-                       href="#nav-{{ section }}"
+                       data-bs-toggle="tab"
+                       data-bs-target="#nav-{{ section }}"
                        role="tab"
                        aria-controls="nav-{{ section }}"
                        aria-selected="true">{{ section | capitalize }}</a>

@@ -1,39 +1,62 @@
-function renderPdf(file){
-    var url = '/js/libs/pdfjs/#../../../' + file;
+function renderPdf (item) {
+  let iframe = document.createElement('iframe')
+  iframe.setAttribute('width', '100%')
+  iframe.setAttribute('height', '1200px')
+  iframe.setAttribute('allowfullscreen', true)
+  iframe.setAttribute('src', item.dataset.file)
 
-    // Remove existing document viewer
-    $('#documentViewerContainer').empty();
+  // Remove existing document viewer
+  if (document.querySelector('#documentViewerContainer iframe')) {
+    document.querySelector('#documentViewerContainer iframe').remove()
+  }
 
-    // Add new document viewer
-    $('<iframe />', {
-        width: '100%',
-        height: '1200px',
-        allowfullscreen: true,
-        src: file
-    }).appendTo('#documentViewerContainer');
+  document.getElementById('documentViewerContainer').appendChild(iframe)
+
+  if (item.dataset.description) {
+    document.getElementById('documentDescription').innerText = item.dataset.description
+  } else {
+    document.getElementById('documentDescription').innerText = ''
+  }
 }
 
-$(document).ready(function() {
+// From: https://gomakethings.com/how-to-get-all-of-an-elements-siblings-with-vanilla-js/
+function getSiblings (elem) {
+  // Setup siblings array and get the first sibling
+  var siblings = []
+  var sibling = elem.parentNode.firstChild
 
-    // Set the first tab active. Done here because it may vary depending on what assets are
-    // available for a given person.
-    $('#nav-tab a:first-child').addClass('active');
-    $('#nav-tabContent div:first-child').addClass('show').addClass('active');
-
-    // Render the first document without requiring a click.
-    if ($('#documentList').children().length > 0) {
-        $('#documentList').children().first().addClass('active')
-        renderPdf($('#documentList').children().first().data('file'));
-
+  // Loop through each sibling and push to the array
+  while (sibling) {
+    if (sibling.nodeType === 1 && sibling !== elem) {
+      siblings.push(sibling)
     }
+    sibling = sibling.nextSibling
+  }
+  return siblings
+}
 
-    // Render the selected PDF from the list
-    $('#documentList').find('a').click(function(event){
-        event.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+  // Set the first tab active. Done here because it may vary depending on what assets are
+  // available for a given person.
+  document.querySelector('#nav-tab a:first-child').classList.add('active')
+  document.querySelector('#nav-tabContent div:first-child').classList.add('show', 'active')
 
-        // Correctly set the active class
-        $('#documentList').find('a').removeClass('active');
-        $(this).addClass('active');
-        renderPdf($(this).data('file'))
-    });
-});
+  // Render the first document without requiring a click.
+  let docs = document.getElementById('documentList')
+  if (docs.childElementCount > 0) {
+    docs.firstElementChild.classList.add('active')
+    renderPdf(docs.firstElementChild)
+  }
+
+  // Render the selected PDF from list.
+  document.querySelectorAll('#documentList a').forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault()
+      getSiblings(item).forEach(sib => {
+        sib.classList.remove('active')
+      })
+      item.classList.add('active')
+      renderPdf(item)
+    })
+  })
+})

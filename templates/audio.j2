@@ -1,12 +1,20 @@
-<div class="row">
-    {% for item in person['audio'] %}
-    <div class="col">
-    <h3>{{ item['title'] }}</h3>
-    <audio controls class="embed-responsive-item">
-        <source src="{{ item['url'] }}" type="audio/mpeg"/>
-        <a href="{{ item['url'] }}">{{ item['title'] }}</a>
-        An html5-capable browser is required to play this audio.
-    </audio>
-</div>
+{% for item_batch in person.audio | batch(3) %}
+<div class="row mb-4">
+    {% for item in item_batch %}
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">{{ item['title'] }}</div>
+                <div class="card-body">
+                    <div class="card-text">
+                        <audio controls class="embed-responsive-item">
+                            <source src="{{ item['url'] }}" type="audio/mpeg"/>
+                            <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+                            An html5-capable browser is required to play this audio.
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 </div>
+{% endfor %}

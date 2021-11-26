@@ -34,7 +34,7 @@ def build():
     By wrapping the call to run, we can disable minification when serving the site
     locally to make debugging easier.
     """
-    run(html_minify=False)
+    run(html_minify=False, include_unpublished_data=True)
 
 
 # Always build before starting the server

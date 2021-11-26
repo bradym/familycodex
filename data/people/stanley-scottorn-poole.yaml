@@ -1,15 +1,20 @@
 full_name: Stanley Scottorn Poole
 birth_date: 12 July 1888
 death_date: 16 June 1958
+family: Poole
+slug: stanley-scottorn-poole
+
 links:
-- title: familysearch.org
-  url: https://www.familysearch.org/tree/person/details/KWC4-9W5
-- title: ancestry.com
-  url: https://www.ancestry.com/family-tree/person/tree/108791949/person/170071871280/facts
+  - title: familysearch.org
+    url: https://www.familysearch.org/tree/person/details/KWC4-9W5
+  - title: ancestry.com
+    url: https://www.ancestry.com/family-tree/person/tree/108791949/person/170071871280/facts
+
 videos:
-- url: https://www.youtube-nocookie.com/embed/yWQViQwyfQc?rel=0
-  width: 560
-  height: 315
+  - url: https://www.youtube-nocookie.com/embed/yWQViQwyfQc?rel=0
+    width: 560
+    height: 315
+
 documents:
-- title: Family History of Stanely Scottorn Poole
-  url: /media/stanley-scottorn-poole/documents/family-history-of-stanley-scottorn-poole.pdf
+  - title: Family History of Stanely Scottorn Poole
+    url: /media/stanley-scottorn-poole/documents/family-history-of-stanley-scottorn-poole.pdf
