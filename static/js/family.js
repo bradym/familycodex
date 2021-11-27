@@ -37,7 +37,7 @@ function getSiblings (elem) {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Set the first tab active. Done here because it may vary depending on what assets are
-  // available for a given person.
+  // available for a given family.
   document.querySelector('#nav-tab a:first-child').classList.add('active')
   document.querySelector('#nav-tabContent div:first-child').classList.add('show', 'active')
 

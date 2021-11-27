@@ -1,0 +1,65 @@
+name: Sylvester Glenn Smith and Kate Vivian Poole
+url: glenn-and-vivian.html
+photo_url: /media/glenn-and-vivian/photos/glenn-and-vivian.jpg
+
+people:
+  - full_name: Sylvester Glenn Smith
+    birth_date: 26 October 1920
+    death_date: 11 February 2008
+    links:
+      - title: familysearch.org
+        url: https://www.familysearch.org/tree/person/details/KWCF-B79
+      - title: ancestry.com
+        url: https://www.ancestry.com/family-tree/person/tree/108791949/person/170071871239/facts
+  - full_name: Kate Vivian Poole
+    birth_date: 4 April 1921
+    death_date: 4 March 2006
+    links:
+      - title: familysearch.org
+        url: https://www.familysearch.org/tree/person/details/KWCF-B7Q
+      - title: ancestry.com
+        url: https://www.ancestry.com/family-tree/person/tree/108791949/person/170071871240/facts
+
+audio:
+  - title: Courtship & Marriage
+    url: /media/glenn-and-vivian/audio/courtship-and-marriage.mp3
+  - title: Deer Hunting Stories
+    url: /media/glenn-and-vivian/audio/deer-hunting-stories.mp3
+  - title: High School
+    url: /media/glenn-and-vivian/audio/high-school.mp3
+  - title: Lehi and Sandy
+    url: /media/glenn-and-vivian/audio/lehi-sandy.mp3
+  - title: Military
+    url: /media/glenn-and-vivian/audio/military.mp3
+  - title: Mission
+    url: /media/glenn-and-vivian/audio/mission.mp3
+  - title: Prayer Story
+    url: /media/glenn-and-vivian/audio/prayer-story.mp3
+  # - title: Randolph Memories
+  #   url: /media/glenn-and-vivian/audio/randolph.mp3
+
+photos:
+    - url: /media/glenn-and-vivian/photos/penmanship.jpg
+
+documents:
+  - title: Elijah Program
+    description: Glenn and Vivian met while taking part in this program.
+    url: /media/glenn-and-vivian/documents/elijah-program.pdf
+  - title: Glenn 2003 reading list
+    url: /media/glenn-and-vivian/documents/reading-list-2003.pdf
+  - title: Glenn 2004 reading list
+    url: /media/glenn-and-vivian/documents/reading-list-2004.pdf
+  - title: Glenn 2005 reading list
+    url: /media/glenn-and-vivian/documents/reading-list-2005.pdf
+  - title: Glenn 2006 reading list
+    url: /media/glenn-and-vivian/documents/reading-list-2006.pdf
+  - title: Glenn 2007 reading list
+    url: /media/glenn-and-vivian/documents/reading-list-2007.pdf
+
+videos:
+  - url: https://youtu.be/uKTTnWLId5o
+    title: S Glenn Smith Funeral Slideshow
+    noembed: true
+  - url: https://youtu.be/LzL_XE3RCvo
+    title: Kate Vivian Poole Funeral Slideshow
+    noembed: true

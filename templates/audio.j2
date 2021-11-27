@@ -1,4 +1,4 @@
-{% for item_batch in person.audio | batch(3) %}
+{% for item_batch in current_family.audio | batch(3) %}
 <div class="row mb-4">
     {% for item in item_batch %}
         <div class="col-sm-4">

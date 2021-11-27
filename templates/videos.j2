@@ -1,12 +1,33 @@
-{% for video_batch in person['videos'] | batch(2) %}
+{% set embed = [] %}
+{% set noembed = [] %}
+
+{% for item in current_family['videos'] %}
+    {% if 'noembed' in item %}
+        {% set _ = noembed.append(item) %}
+    {% else %}
+        {% set _ = embed.append(item) %}
+    {% endif %}
+{% endfor %}
+
+{% for video_batch in embed | batch(2) %}
     <div class="row mb-4">
     {% for item in video_batch %}
         <div class="col-sm-6">
             {% if item['description'] %}
             <div class="mb-2">{{ item['description'] }}</div>
             {% endif %}
-            <iframe width="{{ item['width'] }}" height="{{ item['height'] }}" src="{{ item['url'] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+            <iframe width="560" height="315" src="{{ item['url'] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
         </div>
     {% endfor %}
 </div>
 {% endfor %}
+
+<p class="lead">
+    Due to copyright issues, the following video(s) can only be viewed on youtube.com.
+</p>
+
+<ul>
+{% for item in noembed %}
+    <li><a href="{{ item['url'] }}" target="_blank">{{ item['title'] }}</a></li>
+{% endfor %}
+</ul>

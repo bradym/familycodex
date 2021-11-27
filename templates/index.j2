@@ -4,26 +4,12 @@
 
 {% block content %}
     <h1>Welcome to the Family Codex</h1>
-    <p class="lead">The goal of this site is to share family artifacts, please choose a family member below.</p>
-
-    {% for family_batch in families | batch(2) %}
-        <div class="row mb-4">
-        {% for family in family_batch %}
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">{{ family }}</div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <ul>
-                                {% for person in families[family] %}
-                                <li><a href="{{ person['slug'] }}.html">{{ person['full_name'] }} {{ person['dates'] }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    <ul>
+    {% for item in family | sort %}
+        {% set current_family = family[item] %}
+        <li><a href="{{ current_family['url'] }}">{{ current_family['name'] }}</a></li>
     {% endfor %}
+    </ul>
+
+</ul>
 {% endblock %}

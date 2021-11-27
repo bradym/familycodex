@@ -1,19 +1,25 @@
 <div id="carousel" class="carousel slide"  data-bs-interval="false">
     <div class="carousel-inner">
-        {% for photo in person['photos'] %}
+        {% for photo in current_family['photos'] %}
         <div class="carousel-item{% if loop.first %} active{% endif %}">
             <div class="carousel-caption d-flex">
+                {% if current_family['photos'] | count > 1 %}
                 <button class="carousel-control-prev justify-content-start" href="#carousel" role="button" data-bs-slide="prev">
                     <span class="start-0 bi bi-arrow-left pr-2" aria-hidden="true"></span>
                     <span>Previous</span>
                 </button>
+                {% endif %}
+                {% if photo['title'] %}
                 <div class="flex-grow-1">
                     {{ photo['title'] }}
                 </div>
+                {% endif %}
+                {% if current_family['photos'] | count > 1 %}
                 <button class="carousel-control-next justify-content-end" href="#carousel" role="button" data-bs-slide="next">
                     <span>Next</span>
                     <span class="start-0 bi bi-arrow-right pl-2" aria-hidden="true"></span>
                 </button>
+                {% endif %}
             </div>
             <img class="d-block w-100" src="{{ photo['url'] }}"{% if photo['title'] %} alt="{{ photo['title'] }}"{% endif %}>
         </div>

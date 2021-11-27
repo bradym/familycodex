@@ -20,14 +20,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <a class="nav-link" href="/index.html">Home</a>
-                    {% if people | count > 1 %}
+                    {% if family | count > 1 %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for item in people|sort %}
-                                {% set person = people[item] %}
-                                {% set href = '/' + item + '.html' %}
-                                <a class="dropdown-item fs-5" href="{{ href }}">{{ person.full_name }}</a>
+                            {% for item in family | sort %}
+                            {% set current_family = family[item] %}
+                                <a class="dropdown-item fs-5" href="{{ current_family['url'] }}">{{ current_family['name'] }}</a>
                             {% endfor %}
                         </div>
                     </li>
