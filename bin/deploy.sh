@@ -4,7 +4,7 @@ set -o errexit
 set -o errtrace
 set -o nounset
 set -o pipefail
-if [[ ! -z ${DEBUG_MODE+x} ]]; then
+if [[ -n ${DEBUG_MODE+x} ]]; then
     set -o xtrace
     set -o functrace
 fi
