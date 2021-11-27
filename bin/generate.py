@@ -4,7 +4,6 @@
 import os
 import shutil
 from pathlib import Path
-from pprint import pprint
 
 import htmlmin
 import yaml
@@ -107,21 +106,6 @@ class GenerateSite:
                     if 'fake' not in current_data or include_fake_data:
                         self.data[data_type][name] = current_data
 
-    def process_data(self):
-        """
-        Loop through loaded data and do any additional processing.
-        """
-        if 'families' not in self.data:
-            self.data['families'] = {}
-
-        for person in self.data['people']:
-            current_family = self.data['people'][person]['family']
-
-            if current_family not in self.data['families']:
-                self.data['families'][current_family] = []
-
-            self.data['families'][current_family].append(self.data['people'][person])
-
     def set_minify(self, html_minify):
         """Setter for the html_minify property. Used to disable html minification when built via the local server."""
         self.html_minify = html_minify
@@ -138,11 +122,10 @@ def run(html_minify=True, include_unpublished_data=False):
     generator.clean()
     generator.copy_static()
     generator.load_data(include_unpublished_data)
-    generator.process_data()
     generator.generate_page('index', 'index')
 
-    for item in generator.data['people']:
-        generator.generate_page('person', item)
+    for item in generator.data['family']:
+        generator.generate_page('family', item)
 
     print('Site generation complete')
 
