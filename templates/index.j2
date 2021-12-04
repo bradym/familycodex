@@ -7,7 +7,7 @@
     <ul>
     {% for item in family | sort %}
         {% set current_family = family[item] %}
-        <li><a href="{{ current_family['url'] }}">{{ current_family['name'] }}</a></li>
+        <li><a href="/{{ item }}.html">{{ current_family['name'] }}</a></li>
     {% endfor %}
     </ul>
 
