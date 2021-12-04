@@ -2,7 +2,6 @@ fake: true
 name: Jim and Pam McFakerson
 url: mcfakerson.html
 photo_url: https://pixabay.com/get/g0ccccac2c0b824ea48841cdfb11f54c98967afe97beefd03bd5306b8e62f6ed0c1bf899672197bdd2b2ced40327d52bad59cf0fa6b364fa555a4649212bfffefa4140664de7b1f03c1b1980f9e34c5a0_640.png?attachment=
-photo_width: 400
 description: "Morbi vel lorem libero. Cras nisi mi, sodales ac elementum quis, bibendum congue mi. Maecenas blandit enim eu lorem dapibus, vel vulputate nisl ullamcorper. Proin odio elit, scelerisque at dictum id, malesuada ut arcu. Duis ante nunc, vehicula nec ex nec, molestie volutpat libero. Nullam non justo gravida, ultricies massa nec, vestibulum mi. Quisque maximus sem non nisl pretium, eget blandit augue molestie. Ut nec velit quis odio pellentesque aliquet."
 
 people:
