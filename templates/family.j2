@@ -1,7 +1,7 @@
 {% extends "base.j2" %}
-{% set title = family[current_item].name %}
-{% set current_family = family[current_item] %}
-{% set sections = ['photos', 'videos', 'audio', 'documents'] %}
+{% set title = family.name %}
+{% set current_family = family %}
+{% set sections = ['photos', 'videos', 'audio', 'documents', 'stories'] %}
 
 {% block content %}
     <div class="d-flex flex-row">

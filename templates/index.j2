@@ -1,15 +1,11 @@
 {% extends "base.j2" %}
-
-{% set title = pages[current_item]['title'] %}
+{% set title = 'Welcome to the Family Codex' %}
 
 {% block content %}
     <h1>Welcome to the Family Codex</h1>
     <ul>
-    {% for item in family | sort %}
-        {% set current_family = family[item] %}
-        <li><a href="/{{ item }}.html">{{ current_family['name'] }}</a></li>
+    {% for item in nav %}
+        <li><a href="{{ item.href }}">{{ item.text }}</a></li>
     {% endfor %}
     </ul>
-
-</ul>
 {% endblock %}

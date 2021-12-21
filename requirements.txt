@@ -13,8 +13,10 @@ filelock==3.4.0           # via virtualenv
 flake8==3.9.2             # via -r requirements.in
 htmlmin==0.1.12           # via -r requirements.in
 identify==2.4.0           # via pre-commit
+importlib-metadata==4.8.2  # via markdown
 jinja2==3.0.1             # via -r requirements.in
 livereload==2.6.3         # via -r requirements.in
+markdown==3.3.6           # via -r requirements.in
 markupsafe==2.0.1         # via jinja2
 mccabe==0.6.1             # via flake8
 nodeenv==1.6.0            # via pre-commit
@@ -29,3 +31,4 @@ toml==0.10.2              # via autopep8, pre-commit
 tornado==6.1              # via livereload
 virtualenv==20.10.0       # via pre-commit
 watchdog==2.1.3           # via -r requirements.in
+zipp==3.6.0               # via importlib-metadata

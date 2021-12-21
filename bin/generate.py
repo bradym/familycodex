@@ -4,8 +4,8 @@
 import os
 import shutil
 from pathlib import Path
-
 import htmlmin
+import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -35,14 +35,19 @@ class GenerateSite:
         if not os.path.isdir(self.build_dir):
             os.mkdir(self.build_dir)
 
-    def generate_page(self, template_name, item):
-        """Render the given template and write it to disk."""
-        self.data['current_item'] = item
-        dest = os.path.join(self.build_dir, '{}.html'.format(item))
-        template = '{}.j2'.format(template_name)
+    def generate_family_pages(self):
+        for item in self.data['family']:
+            dest = Path(self.build_dir).joinpath(f'{item}.html')
+            render_data = {'family': self.data['family'][item], 'nav': self.data['nav']}
+            self.generate_page(render_data, dest, 'family.j2')
 
-        html = self.env.get_template(template).render(self.data)
+    def generate_index(self):
+        render_data = self.data
+        dest = Path(self.build_dir).joinpath('index.html')
+        self.generate_page(render_data, dest, 'index.j2')
 
+    def generate_page(self, data, dest, template):
+        html = self.env.get_template(template).render(data)
         if self.html_minify:
             html = htmlmin.minify(html, remove_comments=True)
 
@@ -85,26 +90,49 @@ class GenerateSite:
                     dest = os.path.join(dest_dir, item)
                     shutil.copyfile(source, dest)
 
-    def load_data(self, include_fake_data=False):
+    def load_families(self, include_fake_data=False):
         """
-        This loops through all yaml files in the data directory and loads the data into a
-        class property for later use.
+        Loop through families folder and load yaml data and stories into data object.
         """
-        for root, dirs, files in os.walk(self.data_dir):
-            for item in files:
+        md = markdown.Markdown(extensions=['markdown.extensions.meta'])
+        self.data = {'family': {}, 'nav': []}
 
-                data_type = os.path.basename(root)
-                full_path = os.path.join(root, item)
-                name = os.path.splitext(item)[0]
+        root = Path(f'{self.data_dir}/families')
 
-                if data_type not in self.data:
-                    self.data[data_type] = {}
+        for current_family_path in root.iterdir():
+            current_family = current_family_path.stem
+            current_root = root.joinpath(current_family)
+            data_file = current_root.joinpath(f'{current_family}.yaml')
 
-                with open(full_path, 'rb') as f:
-                    current_data = yaml.safe_load(f)
+            if not data_file.exists():
+                continue
 
-                    if 'fake' not in current_data or include_fake_data:
-                        self.data[data_type][name] = current_data
+            with open(data_file, 'r', encoding='utf-8') as f:
+                current_data = yaml.safe_load(f)
+
+            if not include_fake_data and 'fake' in current_data and current_data['fake']:
+                continue
+
+            story_path = current_root.joinpath('stories')
+            if story_path.is_dir():
+                if 'stories' not in current_data:
+                    current_data['stories'] = []
+
+                for story in story_path.iterdir():
+                    with open(story, 'r', encoding='utf-8') as f:
+                        # content = md.convert(f.read())
+                        current_story = {
+                            'content': md.convert(f.read()),
+                            'id': story.stem
+                        }
+
+                        for key in md.Meta:
+                            current_story[key] = '\n'.join(md.Meta[key])
+
+                        current_data['stories'].append(current_story)
+
+            self.data['family'][current_family] = current_data
+            self.data['nav'].append({'href': f'/{current_family}.html', 'text': current_data['name']})
 
     def set_minify(self, html_minify):
         """Setter for the html_minify property. Used to disable html minification when built via the local server."""
@@ -121,11 +149,9 @@ def run(html_minify=True, include_unpublished_data=False):
     generator.set_minify(html_minify)
     generator.clean()
     generator.copy_static()
-    generator.load_data(include_unpublished_data)
-    generator.generate_page('index', 'index')
-
-    for item in generator.data['family']:
-        generator.generate_page('family', item)
+    generator.load_families(include_unpublished_data)
+    generator.generate_index()
+    generator.generate_family_pages()
 
     print('Site generation complete')
 

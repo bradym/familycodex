@@ -1,0 +1,19 @@
+<div class="d-flex flex-row">
+    <div id="storyList" class="list-group" role="tablist" aria-orientation="vertical" style="width:15%; padding-right:20px;">
+        {% for story in current_family['stories'] %}
+        <a href="#" class="list-group-item list-group-item-action"
+            id="{{ story['id']}}-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#{{ story['id']}}"
+            role="tab">
+        {{ story['title']}}
+        </a>
+        {% endfor %}
+    </div>
+
+    <div class="col tab-content" id="storyList-tabContent">
+        {% for story in current_family['stories'] %}
+            <div class="tab-pane fade" id="{{ story['id']}}" role="tabpanel" aria-labelledby="{{ story['id']}}-tab">{{ story['content']}}</div>
+        {% endfor %}
+    </div>
+</div>

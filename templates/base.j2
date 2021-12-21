@@ -10,7 +10,7 @@
     {% block page_css %}{% endblock %}
     <title>{{ title }}</title>
 </head>
-<body class="fs-5">
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -24,9 +24,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">People</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for item in family | sort %}
-                            {% set current_family = family[item] %}
-                                <a class="dropdown-item fs-5" href="/{{ item }}.html">{{ current_family['name'] }}</a>
+                            {% for item in nav %}
+                                <a class="dropdown-item fs-5" href="{{ item.href }}">{{ item.text }}</a>
                             {% endfor %}
                         </div>
                     </li>

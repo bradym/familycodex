@@ -22,12 +22,19 @@
 </div>
 {% endfor %}
 
-<p class="lead">
-    Due to copyright issues, the following video(s) can only be viewed on youtube.com.
-</p>
+{% if noembed | count > 0 %}
+    <p class="lead">
+        {% if noembed | count > 1 %}
+            {% set term='videos' %}
+        {% else %}
+            {% set term='video' %}
+        {% endif %}
+        Due to copyright issues, the following {{ term }} can only be viewed on youtube.com.
+    </p>
 
-<ul>
-{% for item in noembed %}
-    <li><a href="{{ item['url'] }}" target="_blank">{{ item['title'] }}</a></li>
-{% endfor %}
-</ul>
+    <ul>
+    {% for item in noembed %}
+        <li><a href="{{ item['url'] }}" target="_blank">{{ item['title'] }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}

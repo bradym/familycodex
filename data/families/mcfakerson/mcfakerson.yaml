@@ -38,9 +38,9 @@ documents:
 photos:
   - url: https://file-examples-com.github.io/uploads/2017/10/file_example_JPG_100kB.jpg
     title: this is the image title.
-  - url: https://file-examples-com.github.io/uploads/2017/10/file_example_GIF_500kB.gif
-    title: Image 2
   - url: https://file-examples-com.github.io/uploads/2020/03/file_example_SVG_20kB.svg
+    title: Image 2
+  - url: https://file-examples-com.github.io/uploads/2017/10/file_example_GIF_500kB.gif
     title: Image 3
 
 audio:
