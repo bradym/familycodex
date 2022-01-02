@@ -1,3 +1,6 @@
+/* Inform standardjs that these are global variables so it won't complain.  */
+/* global bootstrap, history, location                                      */
+
 function renderPdf (item) {
   let iframe = document.createElement('iframe')
   iframe.setAttribute('width', '100%')
