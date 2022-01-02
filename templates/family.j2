@@ -16,7 +16,7 @@
                 {% if person.death_date %}<tr><th>Death</th><td>{{ person.death_date }}</td></tr>{% endif %}
                 {% if person.links %}
                 <tr><th>Other pages</th><td>
-                    <ul class="pl-0 mb-0" style="list-style:none;">
+                    <ul id="otherPagesList" class="pl-0 mb-0">
                     {% for link in person.links %}
                         <li><a target="_blank" href="{{ link.url }}">{{ link.title }}</a></li>
                     {% endfor %}
