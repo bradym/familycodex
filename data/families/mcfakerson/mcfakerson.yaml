@@ -2,6 +2,7 @@ fake: true
 name: Jim and Pam McFakerson
 photo_url: /img/blank_avatar.png
 description: "Morbi vel lorem libero. Cras nisi mi, sodales ac elementum quis, bibendum congue mi. Maecenas blandit enim eu lorem dapibus, vel vulputate nisl ullamcorper. Proin odio elit, scelerisque at dictum id, malesuada ut arcu. Duis ante nunc, vehicula nec ex nec, molestie volutpat libero. Nullam non justo gravida, ultricies massa nec, vestibulum mi. Quisque maximus sem non nisl pretium, eget blandit augue molestie. Ut nec velit quis odio pellentesque aliquet."
+audio_batch_size: 2
 
 people:
   - full_name: Jim McFakerson
@@ -35,6 +36,7 @@ documents:
 
   - title: Another sample pdf.
     url: https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_500_kB.pdf
+
   - title: Yet another sample pdf.
     url: https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_1MB.pdf
 
