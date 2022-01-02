@@ -38,6 +38,35 @@ function getSiblings (elem) {
   return siblings
 }
 
+// Adapted from: https://www.viperswebdesign.com/blog/how-to-add-deep-linking-to-the-bootstrap-5-tabs-component
+function deepLinking () {
+  // deep linking - load tab on refresh
+  let url = location.href.replace(/\/$/, '')
+  if (location.hash) {
+    const currentTab = document.querySelector(`#nav-tab a[href="${window.location.hash}"]`)
+    const curTab = new bootstrap.Tab(currentTab)
+    curTab.show()
+    url = location.href.replace(/\/#/, '#')
+    history.pushState(null, null, url)
+    setTimeout(() => {
+      window.scrollTop = 0
+    }, 400)
+  }
+
+  // change url based on selected tab
+  const selectableTabList = [].slice.call(document.querySelectorAll('a[data-bs-toggle="tab"]'))
+  selectableTabList.forEach((selectableTab) => {
+    selectableTab.addEventListener('click', function () {
+      var newUrl
+      const hash = selectableTab.getAttribute('href')
+      newUrl = url.split('#')[0] + hash
+      history.pushState(null, null, newUrl)
+    })
+  })
+}
+
+window.onhashchange = deepLinking
+
 document.addEventListener('DOMContentLoaded', function () {
   // Set the first tab active. Done here because it may vary depending on what assets are
   // available for a given family.
@@ -70,4 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let tab = new bootstrap.Tab(tabTrigger)
     tab.show()
   }
+
+  deepLinking()
 })
