@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Display the first story without requiring a click.
   let stories = document.getElementById('storyList')
-  if (stories.childElementCount > 0) {
+  if (stories !== null && stories.childElementCount > 0) {
     let tabTrigger = stories.firstElementChild
     let tab = new bootstrap.Tab(tabTrigger)
     tab.show()
