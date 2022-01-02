@@ -20,8 +20,10 @@ people:
 videos:
   - url: https://www.youtube-nocookie.com/embed/33DWqRyAAUw?rel=0
     description: My weapon against noisy Mockingbirds and Squirrels.
+
   - url: https://www.youtube-nocookie.com/embed/33DWqRyAAUw?rel=0
     description: My weapon against noisy Mockingbirds and Squirrels.
+
   - url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
     title: Rick Astley - Never Gonna Give You Up
     noembed: true
@@ -30,6 +32,7 @@ documents:
   - title: This is a sample pdf.
     description: Vestibulum neque massa, scelerisque sit amet ligula eu, congue molestie mi.
     url: https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf
+
   - title: Another sample pdf.
     url: https://file-examples-com.github.io/uploads/2017/10/file-example_PDF_500_kB.pdf
   - title: Yet another sample pdf.
@@ -38,15 +41,24 @@ documents:
 photos:
   - url: https://file-examples-com.github.io/uploads/2017/10/file_example_JPG_100kB.jpg
     title: this is the image title.
+
   - url: https://file-examples-com.github.io/uploads/2020/03/file_example_SVG_20kB.svg
     title: Image 2
+
   - url: https://file-examples-com.github.io/uploads/2017/10/file_example_GIF_500kB.gif
     title: Image 3
 
 audio:
   - title: Sample 1
     url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3
+    description: Blargety Blargh Blargh
+    image: /media/mcfakerson/photos/file_example_JPG_100kB.jpg
+
   - title: Sample 2
     url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3
+
   - title: Sample 3
+    url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3
+
+  - title: Sample 4
     url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3
