@@ -21,4 +21,6 @@ jobs:
         uses: docker/build-push-action@v2.7.0
         with:
           push: true
-          tags: ghcr.io/bradym/familycodex:latest
+          tags: |
+            ghcr.io/bradym/familycodex:latest
+            ghcr.io/bradym/familycodex:${{ github.sha }}
