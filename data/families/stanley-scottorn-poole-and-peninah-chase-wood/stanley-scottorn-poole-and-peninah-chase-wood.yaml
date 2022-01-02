@@ -24,6 +24,15 @@ videos:
   - url: https://www.youtube-nocookie.com/embed/yWQViQwyfQc?rel=0
   - url: https://www.youtube-nocookie.com/embed/OvrPVpNE1PM?rel=0
 
+audio:
+  - title: Mormon Tabernacle Choir of Salt Lake City
+    url: /media/stanley-scottorn-poole-and-peninah-chase-wood/audio/mormon-tabernacle-choir-of-salt-lake-city.mp3
+    image: /media/stanley-scottorn-poole-and-peninah-chase-wood/audio/mormon-tabernacle-choir-of-salt-lake-city.jpg
+
+  - title: The Mormon Tabernacle Choir's Greatest Hits
+    url: /media/stanley-scottorn-poole-and-peninah-chase-wood/audio/the-mormon-tabernacle-choirs-greatest-hits.mp3
+    image: /media/stanley-scottorn-poole-and-peninah-chase-wood/audio/the-mormon-tabernacle-choirs-greatest-hits.jpg
+
 documents:
   - title: Family History of Stanely Scottorn Poole
     url: /media/stanley-scottorn-poole-and-peninah-chase-wood/documents/family-history-of-stanley-scottorn-poole.pdf
