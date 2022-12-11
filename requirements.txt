@@ -22,7 +22,7 @@ htmlmin==0.1.12
     # via -r requirements.in
 identify==2.4.0
     # via pre-commit
-jinja2==3.0.1
+jinja2==3.1.2
     # via -r requirements.in
 livereload==2.6.3
     # via -r requirements.in
