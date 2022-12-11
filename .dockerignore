@@ -1,8 +1,0 @@
-.direnv
-.git
-.github
-.history
-.mypy_cache
-.vscode
-build
-media
