@@ -4,6 +4,7 @@
 #
 #    pip-compile --annotation-style=line --output-file=requirements.txt requirements.in
 #
+<<<<<<< HEAD
 appdirs==1.4.4
     # via pytoolconfig
 autopep8==1.5.7
@@ -70,3 +71,16 @@ virtualenv==20.10.0
     # via pre-commit
 watchdog==2.2.0
     # via -r requirements.in
+=======
+htmlmin==0.1.12           # via -r requirements.in
+importlib-metadata==5.1.0  # via markdown
+jinja2==3.0.1             # via -r requirements.in
+livereload==2.6.3         # via -r requirements.in
+markdown==3.3.6           # via -r requirements.in
+markupsafe==2.0.1         # via jinja2
+pyyaml==6.0               # via -r requirements.in
+six==1.16.0               # via livereload
+tornado==6.1              # via livereload
+watchdog==2.2.0           # via -r requirements.in
+zipp==3.11.0              # via importlib-metadata
+>>>>>>> 2882672 (remove unused python dependencies)
