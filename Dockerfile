@@ -6,7 +6,7 @@ COPY . /app/
 
 RUN /app/bin/generate.py
 
-FROM nginxinc/nginx-unprivileged:1.20-alpine
+FROM nginxinc/nginx-unprivileged:1.23-alpine
 
 USER root
 
