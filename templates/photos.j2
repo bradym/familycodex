@@ -21,7 +21,7 @@
                 </button>
                 {% endif %}
             </div>
-            <img class="d-block w-100" src="{{ photo['url'] }}"{% if photo['title'] %} alt="{{ photo['title'] }}"{% endif %}>
+            <img class="d-block w-100" src="{{ mediaDomain }}/{{ photo['url'] }}"{% if photo['title'] %} alt="{{ photo['title'] }}"{% endif %}>
         </div>
         {% endfor %}
     </div>

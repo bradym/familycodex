@@ -8,10 +8,10 @@
         <div class="card-body">
             <div class="card-text">
                 {% if item['description'] %}<p>{{ item['description'] }} {% endif %}</p>
-                {% if item['image'] %}<p><img src="{{ item['image'] }}" /></p> {% endif %}
+                {% if item['image'] %}<p><img src="{{ mediaDomain }}/{{ item['image'] }}" /></p> {% endif %}
                 <audio controls class="embed-responsive-item">
-                    <source src="{{ item['url'] }}" type="audio/mpeg"/>
-                    <a href="{{ item['url'] }}">{{ item['title'] }}</a>
+                    <source src="{{ mediaDomain }}/{{ item['url'] }}" type="audio/mpeg"/>
+                    <a href="{{ mediaDomain }}/{{ item['url'] }}">{{ item['title'] }}</a>
                     An html5-capable browser is required to play this audio.
                 </audio>
             </div>

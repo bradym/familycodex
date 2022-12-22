@@ -54,7 +54,7 @@ audio:
   - title: Sample 1
     url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3
     description: Blargety Blargh Blargh
-    image: /media/mcfakerson/photos/file_example_JPG_100kB.jpg
+    image: mcfakerson/photos/file_example_JPG_100kB.jpg
 
   - title: Sample 2
     url: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3

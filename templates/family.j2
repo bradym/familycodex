@@ -6,7 +6,7 @@
 {% block content %}
     <div class="d-flex flex-row">
         <div class="pr-5">
-            <img class="img-responsive" src="{{ current_family.photo_url }}" alt="Photo of {{ current_family.name }}">
+            <img class="img-responsive" src="{{ mediaDomain }}/{{ current_family.photo_url }}" alt="Photo of {{ current_family.name }}">
         </div>
         {% for person in current_family['people'] %}
         <div class="pr-5">
