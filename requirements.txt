@@ -20,5 +20,5 @@ six==1.16.0
     # via livereload
 tornado==6.2
     # via livereload
-watchdog==2.2.0
+watchdog==2.3.1
     # via -r requirements.in
