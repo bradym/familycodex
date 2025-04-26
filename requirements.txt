@@ -8,7 +8,7 @@ htmlmin==0.1.12
     # via -r requirements.in
 jinja2==3.1.6
     # via -r requirements.in
-livereload==2.6.3
+livereload==2.7.1
     # via -r requirements.in
 markdown==3.7
     # via -r requirements.in
@@ -16,8 +16,6 @@ markupsafe==2.1.1
     # via jinja2
 pyyaml==6.0.2
     # via -r requirements.in
-six==1.17.0
-    # via livereload
 tornado==6.4.2
     # via livereload
 watchdog==6.0.0
