@@ -10,7 +10,7 @@ jinja2==3.1.6
     # via -r requirements.in
 livereload==2.7.1
     # via -r requirements.in
-markdown==3.8
+markdown==3.8.2
     # via -r requirements.in
 markupsafe==2.1.1
     # via jinja2
