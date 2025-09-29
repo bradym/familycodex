@@ -14,7 +14,7 @@ markdown==3.8
     # via -r requirements.in
 markupsafe==2.1.1
     # via jinja2
-pyyaml==6.0.2
+pyyaml==6.0.3
     # via -r requirements.in
 tornado==6.4.2
     # via livereload
