@@ -6,6 +6,16 @@ Familycodex is a site for sharing family history artifacts such as documents, vi
 
 This codebase is used to generate a static site, which is uploaded to [GitHub Pages](https://pages.github.com/).
 
+## Development
+
+This repo uses `uv` to manage Python dependencies in `pyproject.toml`.
+Python `3.12` is recommended (a dependency is not compatible with Python `3.13+`).
+
+- Install runtime deps: `uv sync --no-dev --no-install-project`
+- Install dev deps (for `bin/serve.py`): `uv sync --no-install-project`
+- Generate the site: `uv run bin/generate.py`
+- Serve locally (w/ autoreload): `uv run bin/serve.py`
+
 ## Site Structure
 
 ### build
