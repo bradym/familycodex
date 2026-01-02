@@ -16,7 +16,27 @@
             {% if item['description'] %}
             <div class="mb-2">{{ item['description'] }}</div>
             {% endif %}
-            <iframe width="560" height="315" src="{{ item['url'] }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+            {% set url = item['url'] %}
+            {% set url_no_proto = url | replace('https://', '') | replace('http://', '') %}
+            {% set url_host = url_no_proto.split('/')[0].split(':')[0] %}
+
+            {% if url_host.endswith('youtu.be') %}
+                {% set video_id = url.split('youtu.be/')[-1].split('?')[0].split('#')[0] %}
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/{{ video_id }}?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+            {% elif '/embed/' in url %}
+                <iframe width="560" height="315" src="{{ url }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen> </iframe>
+            {% else %}
+                {% if url.startswith('http://') or url.startswith('https://') %}
+                    {% set video_src = url %}
+                {% else %}
+                    {% set video_src = mediaDomain ~ '/' ~ url %}
+                {% endif %}
+                <video width="560" height="315" controls preload="metadata">
+                    <source src="{{ video_src }}">
+                    <a href="{{ video_src }}">{{ item['title'] or 'Video' }}</a>
+                    An html5-capable browser is required to play this video.
+                </video>
+            {% endif %}
         </div>
     {% endfor %}
 </div>
