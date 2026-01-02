@@ -35,7 +35,7 @@ jobs:
       - name: Build site
         run: .venv/bin/python bin/generate.py
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: 'build/'
       - name: Deploy to GitHub Pages
